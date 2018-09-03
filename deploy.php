@@ -19,7 +19,7 @@ add('shared_dirs', []);
 // Writable dirs by web server
 add('writable_dirs', []);
 
-set('branch', 'master'); 
+set('branch', 'master');
 // Hosts
 
 host('120.24.241.188')
@@ -31,9 +31,9 @@ host('120.24.241.188')
 
 // Tasks
 
-task('build', function () {
-    run('cd {{release_path}} && build');
-});
+// task('build', function () {
+//     run('cd {{release_path}} && build');
+// });
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
