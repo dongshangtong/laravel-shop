@@ -21,4 +21,4 @@ host('120.24.241.188')
       // 并指定公钥的位置
     ->identityFile('~/.ssh/deployerkey.pub')
 
-    ->set('deploy_path', '~/var/www/laravel-shop');
+    ->set('deploy_path', '/var/www/laravel-shop');
