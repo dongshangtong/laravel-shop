@@ -31,7 +31,7 @@ host('120.24.241.188')
 
     // 自定义任务：重启 php-fpm 服务
     task('php-fpm:restart', function () {
-        run('systemctl restart php-fpm.service');
+        run('sudo service php7.2-fpm restart');
     });
 
     // 自定义任务：supervisor reload
