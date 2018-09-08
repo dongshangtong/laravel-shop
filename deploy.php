@@ -15,7 +15,7 @@ set('writable_chmod_mode', '0755'); // 当使用chmod控制可写权限的时候
 set('writable_dirs', []);
 
 //允许您选择要部署的默认
-set('default_stage', 'prod');
+//set('default_stage', 'prod');
 // Project repository
 set('repository', 'git@github.com:dongshangtong/laravel-shop.git');
 
