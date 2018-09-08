@@ -25,3 +25,45 @@ host('120.24.241.188')
     ->identityFile('~/.ssh/deployerkey.pub')
 
     ->set('deploy_path', '/var/www/laravel-shop');
+    ->set('http_user', 'www')
+    ->addSshOption('UserKnownHostsFile', '/dev/null')
+    ->addSshOption('StrictHostKeyChecking', 'no');
+
+
+    // 自定义任务：重启 php-fpm 服务
+    task('rm -rf node_modules', function () {
+        run('rm -rf node_modules');
+    });
+
+    // 自定义任务：重启 php-fpm 服务
+    task('npm cache clear ', function () {
+        run('npm cache clear ');
+    });
+
+
+    // 自定义任务：重启 php-fpm 服务
+    task('npm install', function () {
+        run('npm install');
+    });
+
+    // 自定义任务：重启 php-fpm 服务
+    task('php-fpm:restart', function () {
+        run('systemctl restart php-fpm.service');
+    });
+
+    // 自定义任务：supervisor reload
+    task('supervisor:reload', function () {
+        run('sudo supervisorctl reload');
+    });
+
+
+    // 执行自定义任务，注意时间点是 current 已经成功链向新部署的目录之后
+    after('deploy:symlink', 'php-fpm:restart');
+    after('deploy:symlink', 'supervisor:reload');
+
+    // 部署成功后重置 opcache 缓存
+    after('deploy:symlink', 'opcache_reset');
+
+
+    // [Optional] if deploy fails automatically unlock.
+    after('deploy:failed', 'deploy:unlock');
