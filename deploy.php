@@ -43,10 +43,3 @@ host('120.24.241.188')
     // 执行自定义任务，注意时间点是 current 已经成功链向新部署的目录之后
     after('deploy:symlink', 'php-fpm:restart');
     after('deploy:symlink', 'supervisor:reload');
-
-    // 部署成功后重置 opcache 缓存
-    after('deploy:symlink', 'opcache_reset');
-
-
-    // [Optional] if deploy fails automatically unlock.
-    after('deploy:failed', 'deploy:unlock');
