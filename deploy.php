@@ -13,6 +13,9 @@ set('shared_dirs', []);     // 共享目录    同上
 set('writable_mode', 'chmod');  // 采用哪种方式控制可写权限，有4中：chown、chgrp、chmod、acl（默认方式）
 set('writable_chmod_mode', '0755'); // 当使用chmod控制可写权限的时候，赋予的可写权限值
 set('writable_dirs', []);
+
+//允许您选择要部署的默认
+set('default_stage', 'prod');
 // Project repository
 set('repository', 'git@github.com:dongshangtong/laravel-shop.git');
 
