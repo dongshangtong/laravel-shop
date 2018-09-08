@@ -30,21 +30,6 @@ host('120.24.241.188')
     ->addSshOption('StrictHostKeyChecking', 'no');
 
 
-    // 自定义任务：重启 php-fpm 服务
-    task('rm -rf node_modules', function () {
-        run('rm -rf node_modules');
-    });
-
-    // 自定义任务：重启 php-fpm 服务
-    task('npm cache clear ', function () {
-        run('npm cache clear ');
-    });
-
-
-    // 自定义任务：重启 php-fpm 服务
-    task('npm install', function () {
-        run('npm install');
-    });
 
     // 自定义任务：重启 php-fpm 服务
     task('php-fpm:restart', function () {
