@@ -25,9 +25,7 @@ host('120.24.241.188')
     ->identityFile('~/.ssh/deployerkey.pub')
 
     ->set('deploy_path', '/var/www/laravel-shop');
-    ->set('http_user', 'www')
-    ->addSshOption('UserKnownHostsFile', '/dev/null')
-    ->addSshOption('StrictHostKeyChecking', 'no');
+
 
 
 
