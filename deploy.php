@@ -34,12 +34,8 @@ host('120.24.241.188')
         run('sudo service php7.2-fpm restart');
     });
 
-    // 自定义任务：supervisor reload
-    task('supervisor:reload', function () {
-        run('sudo supervisorctl reload');
-    });
+
 
 
     // 执行自定义任务，注意时间点是 current 已经成功链向新部署的目录之后
     after('deploy:symlink', 'php-fpm:restart');
-    after('deploy:symlink', 'supervisor:reload');
