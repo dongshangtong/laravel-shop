@@ -26,6 +26,5 @@ Route::group(['middleware' => 'auth'] ,function ($value='')
         Route::group(['middleware' => 'email_verified'], function() {
         
         });
-});
 // 结束
 });
