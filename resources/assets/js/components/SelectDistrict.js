@@ -5,7 +5,7 @@ Vue.component('select-district',{
   props: {
     initValue: {
       type:Array,
-      default:() =>([]),
+       default: () => ([]),
     }
   },
 
@@ -55,7 +55,7 @@ Vue.component('select-district',{
 
  },
 
-   create() {
+   created() {
      this.setFromValue(this.initValue);
    },
 
