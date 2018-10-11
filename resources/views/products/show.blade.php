@@ -62,12 +62,14 @@
 
 @section('scriptsAfterJs')
 <script>
-  $(document).ready(function () {
-    $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
-    $('.sku-btn').click(function () {
-      $('.product-info .price span').text($(this).data('price'));
-      $('.product-info .stock').text('库存：' + $(this).data('stock') + '件');
-    });
-  });
+$(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'});
+            $('.product-info .stock').text('库存' + $('.sku-btn').data('stock') + '件');
+            $('.product-info .price span').text($('.sku-btn').data('price'));
+            $('.sku-btn').click(function () {
+                $('.product-info .price span').text($(this).data('price'));
+                $('.product-info .stock').text('库存' + $(this).data('stock') + '件');
+            })
+        });
 </script>
 @endsection
