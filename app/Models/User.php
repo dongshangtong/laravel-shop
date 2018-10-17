@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Product;
+use App\Models\CartItem;
 use App\Models\UserAddress;
-use App\Models\User;
+
 
 
 
@@ -41,6 +42,12 @@ class User extends Authenticatable
   {
     return $this->hasMany(UserAddress::class);
   }
+
+  public function cartItems()
+  {
+      return $this->hasMany(CartItem::class);
+  }
+
 
 
   public function favoriteProducts()

@@ -39,7 +39,8 @@ Route::group(['middleware' => 'auth'] ,function ($value='')
             Route::post('products/{product}/favorite','ProductsController@favor')->name('products.favor');
             Route::delete('products/{product}/favorite','ProductsController@disfavor')->name('products.disfavor');
         Route::get('products/favorites','ProductsController@favorites')->name('products.favorites');
-    
+
+         Route::post('cart', 'CartController@add')->name('cart.add');
 
     });
 // 结束
