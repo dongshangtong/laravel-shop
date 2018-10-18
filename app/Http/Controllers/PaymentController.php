@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Events\OrderPaid;
 use Endroid\QrCode\QrCode;
 use Illuminate\Http\Request;
 use App\Models\Order;
@@ -63,6 +65,7 @@ public function payByAlipay(Order $order, Request $request)
             'payment_no'     => $data->trade_no, // 支付宝订单号
         ]);
 
+        $this->afterPaid($order);
         return app('alipay')->success();
     }
 
@@ -107,6 +110,8 @@ public function wechatNotify()
         'payment_no'     => $data->transaction_id,
     ]);
 
+    $this->afterPaid($order);
+
     return app('wechat_pay')->success();
 }
 
@@ -131,6 +136,11 @@ public function payByWechat(Order $order, Request $request)
     return response($qrCode->writeString(), 200, ['Content-Type' => $qrCode->getContentType()]);
 }
 
+
+protected function afterPaid(Order $order)
+{
+    event(new OrderPaid($order));
+}
 
 
 }
