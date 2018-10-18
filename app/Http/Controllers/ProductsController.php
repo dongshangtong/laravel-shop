@@ -99,4 +99,6 @@ public function favorites(Request $request)
       return view('products.favorites', ['products' => $products]);
   }
 
+
+
 }
