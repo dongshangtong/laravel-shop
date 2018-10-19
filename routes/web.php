@@ -53,6 +53,8 @@ Route::group(['middleware' => 'auth'] ,function ($value='')
             Route::get('orders/{order}/review','OrdersController@review')->name('orders.review.show');
             Route::post('orders/{order}/review','OrdersController@sendReview')->name('orders.review.store');
             Route::post('orders/{order}/apply_refund','OrdersController@applyRefund')->name('orders.apply_refund');
+            Route::post('payment/wechat/refund_notify','PaymentController@wechatRefundNotify')->name('payment.wechat.refund_notify');
+
 
 
     });
