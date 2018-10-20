@@ -24,7 +24,7 @@ class Category extends Model
                $category->path = '-';
              }else {
                $category->level = $category->parent->level+1;
-               $category->path = $category->parent->path.$category->parent.'-';
+               $category->path = $category->parent->path.$category->parent_id.'-';
              }
            });
     }
@@ -62,8 +62,8 @@ public function getPathIdsAttribute()
 public function getAncestorsAttribute()
 {
       return Category::query()
-              ->whereIn('id',$this->path_ids);
-              ->orderBy('level');
+              ->whereIn('id',$this->path_ids)
+              ->orderBy('level')
               ->get();
 }
 
