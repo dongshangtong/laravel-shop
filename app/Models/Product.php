@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ProductSku;
+use App\Models\Category;
 use Illuminate\Support\Str;
 
 
@@ -34,5 +35,12 @@ public function getImageUrlAttribute()
       }
       return \Storage::disk('public')->url($this->attributes['image']);
   }
+
+
+
+public function category()
+{
+    return $this->belongsTo(Category::class);
+}
 
 }
