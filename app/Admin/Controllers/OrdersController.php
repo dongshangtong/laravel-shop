@@ -16,6 +16,7 @@ use App\Exceptions\InvalidRequestException;
 use App\Http\Requests\ApplyRefundRequest;
 use App\Http\Requests\Admin\HandleRefundRequest;
 use App\Exceptions\InternalException;
+use App\Models\CrowdfundingProduct;
 
 
 
@@ -81,6 +82,11 @@ public function show(Order $order)
           // 判断当前订单是否已支付
           if (!$order->paid_at) {
               throw new InvalidRequestException('该订单未付款');
+          }
+          // 众筹订单只有在众筹成功之后发货
+          if ($order->type === Order::TYPE_CROWDFUNDING &&
+              $order->items[0]->product->crowdfunding->status !== CrowdfundingProduct::STATUS_SUCCESS) {
+              throw new InvalidRequestException('众筹订单只能在众筹成功之后发货');
           }
           // 判断当前订单发货状态是否为未发货
           if ($order->ship_status !== Order::SHIP_STATUS_PENDING) {
