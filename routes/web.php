@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'] ,function ($value='')
             Route::get('installments/{installment}','InstallmentsController@show')->name('installments.show');
             Route::get('installments/{installment}/alipay','InstallmentsController@payByAlipay')->name('installments.alipay');
             Route::get('installments/alipay/return','InstallmentsController@alipayReturn')->name('installments.alipay.return');
+             Route::get('installments/{installment}/wechat','InstallmentsController@payByWechat')->name('installments.wechat');
 
 
 
@@ -68,6 +69,8 @@ Route::group(['middleware' => 'auth'] ,function ($value='')
 // 结束
 });
 
+
+Route::post('installments/wechat/notify','InstallmentsController@wechatNotify')->name('installments.wechat.notify');
 
 Route::post('installments/alipay/notify','InstallmentsController@alipayNotify')->name('installments.alipay.notify');
 
