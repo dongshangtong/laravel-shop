@@ -59,12 +59,17 @@ Route::group(['middleware' => 'auth'] ,function ($value='')
             Route::post('payment/{order}/installment','PaymentController@payByInstallment')->name('payment.installment');
             Route::get('installments', 'InstallmentsController@index')->name('installments.index');
             Route::get('installments/{installment}','InstallmentsController@show')->name('installments.show');
+            Route::get('installments/{installment}/alipay','InstallmentsController@payByAlipay')->name('installments.alipay');
+            Route::get('installments/alipay/return','InstallmentsController@alipayReturn')->name('installments.alipay.return');
 
 
 
     });
 // 结束
 });
+
+
+Route::post('installments/alipay/notify','InstallmentsController@alipayNotify')->name('installments.alipay.notify');
 
 Route::post('payment/wechat/notify','PaymentController@wechatNotify')->name('payment.wechat.notify');
 Route::post('payment/alipay/notify','PaymentController@alipayNotify')->name('payment.alipay.notify');
