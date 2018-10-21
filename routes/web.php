@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'] ,function ($value='')
             Route::post('payment/wechat/refund_notify','PaymentController@wechatRefundNotify')->name('payment.wechat.refund_notify');
             Route::get('coupon_codes/{code}','CouponCodesController@show')->name('coupon_codes.show');
             Route::post('crowdfunding_orders','OrdersController@crowdfunding')->name('crowdfunding_orders.store');
+            Route::post('payment/{order}/installment','PaymentController@payByInstallment')->name('payment.installment');
 
 
 
