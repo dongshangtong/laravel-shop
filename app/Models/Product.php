@@ -20,7 +20,7 @@ public static $typeMap = [
 ];
 
   protected $fillable = [
-    'title',  'description',  'image','no_sale',
+    'title','long_title',  'description',  'image','no_sale',
     'rating', 'sold_count','review_count','price',
     'type'
   ];
