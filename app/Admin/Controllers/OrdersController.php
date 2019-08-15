@@ -17,6 +17,7 @@ use App\Http\Requests\ApplyRefundRequest;
 use App\Http\Requests\Admin\HandleRefundRequest;
 use App\Exceptions\InternalException;
 use App\Models\CrowdfundingProduct;
+use App\Services\OrderService;
 
 
 
@@ -146,6 +147,7 @@ public function handleRefund(Order $order, HandleRefundRequest $request)
     // 是否同意退款
     if ($request->input('agree')) {
         // 同意退款的逻辑这里先留空
+         $orderService->refundOrder($order);
         // todo
         // 调用退款逻辑
         $this->_refundOrder($order);
